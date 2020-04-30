@@ -1,0 +1,17 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: wordpress-server
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: 'false'
+
+spec:
+  rules:
+    - host: wordpress.dockerlabs.de
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: wordpress-svc
+              servicePort: 80
